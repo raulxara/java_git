@@ -1,0 +1,112 @@
+<html>
+    <head>
+        <title>Perguntas & Respostas</title>
+    </head>
+    <body>
+        <div class="title">
+            <h1>Quanto é 5+9+10x0= ?</h1>
+        </div>
+
+        <form class="pergunta">
+        <div class="resposta">
+            <span>14</span>
+            <input type="radio" name="pergunta1" value="correta" />
+            <br/>
+            </div>
+        <div class="resposta">
+            <span>0</span>
+            <input type="radio" name="pergunta1" value="incorreta" />
+            <br/>
+        </div>
+        <div class="resposta">
+            <span>24</span>
+            <input type="radio" name="pergunta1" value="incorreta" />
+            <br/>
+        </div>
+        </form>
+
+
+        <div class="title">
+            <h1>O que eu estou treinando nessa aplicação?</h1>
+        </div>
+
+        <form class="pergunta">
+            <div class="resposta">
+                <span>JavaScript</span>
+                <input type="radio" name="pergunta1" value="correta" />
+                <br/>
+                </div>
+            <div class="resposta">
+                <span>PHP</span>
+                <input type="radio" name="pergunta1" value="incorreta" />
+                <br/>
+            </div>
+            <div class="resposta">
+                <span>CSS</span>
+                <input type="radio" name="pergunta1" value="incorreta" />
+                <br/>
+            </div>
+        </form>
+
+        <div class="title">
+            <h1>Vou acertar a última pergunta?</h1>
+        </div>
+
+        <form class="pergunta">
+            <div class="resposta">
+                <span>Sim</span>
+                <input type="radio" name="pergunta1" value="correta" />
+                <br/>
+                </div>
+            <div class="resposta">
+                <span>Não</span>
+                <input type="radio" name="pergunta1" value="incorreta" />
+                <br/>
+            </div>
+            <div class="resposta">
+                <span>Talvez</span>
+                <input type="radio" name="pergunta1" value="incorreta" />
+                <br/>
+            </div>
+        </form>
+        <script>
+            
+
+
+            var elementos = document.querySelectorAll('[type=radio]');
+
+            for(var i = 0; i < elementos.length; i++){
+                elementos[i].addEventListener('change',function(e){
+                    let marcado = e.target.value;
+                    if(marcado == "correta"){
+                        
+                    let parentNode = e.target.parentNode;
+                    parentNode.style.backgroundColor = 'green';
+
+                    let els = parentNode.parentNode.querySelectorAll('[type=radio]');
+
+                    for(var n = 0; n < els.length; n++){
+                        els[n].disabled = true;
+                    }
+                        
+                    }else if(marcado == "incorreta"){
+                    let parentNode = e.target.parentNode;
+                    parentNode.style.backgroundColor = 'red';
+
+                    let els = parentNode.parentNode.querySelectorAll('[type=radio]');
+
+                    for(var n = 0; n < els.length; n++){
+                        els[n].disabled = true;
+                    }
+
+                    let correta = parentNode.parentNode.querySelector('[value=correta]');
+                    correta.parentNode.style.backgroundColor = 'green';
+
+
+                    }
+                })
+            }
+        </script>
+
+    </body>
+</html>
